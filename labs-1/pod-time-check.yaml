@@ -19,8 +19,7 @@ spec:
         configMapKeyRef:
           name: time-config
           key: TIME_FREQ
-    command: ["/bin/sh"]
-    args: ["-c", "while true; do date; sleep $(TIME_FREQ);done"]
+    command: ["/bin/sh", "-c", "while true; do date; sleep $(TIME_FREQ);done >> /opt/time/time-check.log"]
   volumes:
   - name: log
     emptyDir: {}
