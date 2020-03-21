@@ -1,14 +1,17 @@
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: throw-dice-cronjob
+  name: dice
 spec:
   schedule: "*/1 * * * *"
-  backoffLimit: 25
   jobTemplate:
     spec:
-      containers:
-      - image: kodekloud/throw-dice
-        name: throw-dice
-        command: ["shuf -i 1-6 -n 1"]
-      restartPolicy: Never
+      activeDeadlineSeconds: 20
+      backoffLimit: 25
+      completions: 1
+      template:
+        spec:
+          containers:
+          - image: kodekloud/throw-dice
+            name: throw-dice
+          restartPolicy: OnFailure
