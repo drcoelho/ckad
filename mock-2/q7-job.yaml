@@ -3,7 +3,7 @@ kind: Job
 metadata:
   name: whalesay
 spec:
-  backoffLimit: 4
+  backoffLimit: 6
   completions: 10
   template:
     spec:

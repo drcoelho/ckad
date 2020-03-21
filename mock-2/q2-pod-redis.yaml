@@ -1,3 +1,5 @@
+#kubectl taint nodes node01 app_type=alpha:NoSchedule
+---
 apiVersion: v1
 kind: Pod
 metadata:
