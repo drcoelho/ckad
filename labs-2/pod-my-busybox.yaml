@@ -6,13 +6,23 @@ metadata:
   name: my-busybox
   namespace: dev2406
 spec:
+  tolerations:
+  - key: "node-role.kubernetes.io/master"
+    effect: "NoSchedule"
+    operator: "Exists"
   containers:
   - image: busybox
     name: secret
-    command: ['sleep 3600']
+    command:
+    - sleep
+    - "3600"
+    volumeMounts:
+      - mountPath: /etc/secret-volume
+        name: secret-volume
+        readOnly: true
   volumes:
   - name: secret-volume
     secret:
       secretName: dotfile-secret
   nodeSelector:
-    hostname: master
+    kubernetes.io/hostname: master
