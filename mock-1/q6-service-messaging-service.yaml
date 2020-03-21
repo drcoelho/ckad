@@ -12,7 +12,5 @@ spec:
     protocol: TCP
     targetPort: 6379
   selector:
-    app: redis-pod
+    name: redis-pod
   type: ClusterIP
-status:
-  loadBalancer: {}

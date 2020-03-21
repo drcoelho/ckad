@@ -10,11 +10,14 @@ spec:
   selector:
     matchLabels:
       app: messaging
+      tier: msg
   strategy: {}
   template:
     metadata:
+      name: messaging
       labels:
         app: messaging
+        tier: msg
     spec:
       containers:
       - image: redis:alpine
