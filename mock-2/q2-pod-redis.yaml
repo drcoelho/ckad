@@ -11,5 +11,6 @@ spec:
     resources: {}
   tolerations:
   - key: "app_type"
-    operator: "Exists"
+    operator: "Equal"
+    value: "alpha"
     effect: "NoSchedule"
